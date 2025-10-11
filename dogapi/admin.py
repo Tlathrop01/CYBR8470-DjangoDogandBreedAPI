@@ -16,7 +16,7 @@ class DogAdmin(admin.ModelAdmin):
     list_display_links = ('name', 'owner')
 
     # Define how fields are displayed when editing a Dog instance
-    fields = ('owner', 'name', 'age')
+    fields = ('owner', 'name', 'age', 'breed')
 
 # Register the model and admin class
 admin.site.register(Dog, DogAdmin)

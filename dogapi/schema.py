@@ -9,24 +9,24 @@ class DogType(DjangoObjectType):
     class Meta:
         model = Dog
 
-class Query(graphene.ObjectType):
-    dog = graphene.Field(DogType, id=graphene.Int())
+# class Query(graphene.ObjectType):
+#     dog = graphene.Field(DogType, id=graphene.Int())
 
-    def resolve_dog(self, info, id):
-        user = info.context.user
-        if user.is_anonymous:
-            raise GraphQLError('Not authenticated')
-        try:
-            dog = Dog.objects.get(pk=id)
-            if dog.owner != user:
-                raise GraphQLError('You do not have permission to view this dog.')
-            return dog
-        except Dog.DoesNotExist:
-            return None
+#     def resolve_dog(self, info, id):
+#         user = info.context.user
+#         if user.is_anonymous:
+#             raise GraphQLError('Not authenticated')
+#         try:
+#             dog = Dog.objects.get(pk=id)
+#             if dog.owner != user:
+#                 raise GraphQLError('You do not have permission to view this dog.')
+#             return dog
+#         except Dog.DoesNotExist:
+#             return None
         
-class Mutation(graphene.ObjectType):
-    token_auth = graphql_jwt.ObtainJSONWebToken.Field()
-    verify_token = graphql_jwt.Verify.Field()
-    refresh_token = graphql_jwt.Refresh.Field()
+# class Mutation(graphene.ObjectType):
+#     token_auth = graphql_jwt.ObtainJSONWebToken.Field()
+#     verify_token = graphql_jwt.Verify.Field()
+#     refresh_token = graphql_jwt.Refresh.Field()
 
-schema = graphene.Schema(query=Query, mutation=Mutation)
+# schema = graphene.Schema(query=Query, mutation=Mutation)
