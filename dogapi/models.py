@@ -2,10 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class SizeChoices(models.TextChoices):
+    Tiny = "TY", "Tiny"
+    Small = "SL", "Small"
+    Medium = "MD", "Medium"
+    Large = "LG", "Large"
 
 class Breed(models.Model):
     name = models.CharField(max_length=100)
-    size = models.TextChoices("SizeType", "Tiny Small Medium Large")
+    size = models.CharField(
+        max_length=10,
+        choices=SizeChoices.choices,
+        default=SizeChoices.Medium
+    )
     friendliness = models.IntegerField()
     trainability = models.IntegerField()
     sheddingamount = models.IntegerField()
