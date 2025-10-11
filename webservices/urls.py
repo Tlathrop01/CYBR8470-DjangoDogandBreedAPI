@@ -27,6 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/dogs/', views.DogList.as_view()),
     path('api/dogs/<int:pk>/', views.DogDetail.as_view()),
+    path('api/breeds/', views.BreedList.as_view()),
+    path('api/breeds/<int:pk>/', views.BreedDetail.as_view()),
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
