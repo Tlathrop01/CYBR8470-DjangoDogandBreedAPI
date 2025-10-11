@@ -9,4 +9,4 @@ class DogSerializer(serializers.ModelSerializer):
 class BreedSerializer(serializers.ModelSerializer):
     class Meta:
         model = Breed
-        fields = ['name', 'size', 'friendliness', 'trainability', 'sheddingamount', 'exerciseneeds']
+        fields = ['id', 'name', 'size', 'friendliness', 'trainability', 'sheddingamount', 'exerciseneeds']
