@@ -1,6 +1,6 @@
 import graphene
 from graphene_django.types import DjangoObjectType
-from dogapp.models import Dog
+from dogapi.models import Dog
 from graphql import GraphQLError
 from django.contrib.auth import get_user_model
 import graphql_jwt

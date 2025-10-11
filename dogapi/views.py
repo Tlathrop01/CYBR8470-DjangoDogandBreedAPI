@@ -1,7 +1,7 @@
 from spyne import Application, rpc, ServiceBase, Integer, Unicode
 from spyne.protocol.soap import Soap11
 from spyne.server.django import DjangoApplication
-from dogapp.models import Dog
+from dogapi.models import Dog
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status, permissions, renderers
 from rest_framework.response import Response
@@ -58,7 +58,7 @@ class DogService(ServiceBase):
         except Dog.DoesNotExist:
             return "Dog not found."
 
-soap_app = Application([DogService], 'dogapp.soap',
+soap_app = Application([DogService], 'dogapi.soap',
                        in_protocol=Soap11(validator='lxml'),
                        out_protocol=Soap11())
 

@@ -16,11 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from dogapp.views import dog_service
-from dogapp.views import rest_get_dog
+from dogapi.views import dog_service
+from dogapi.views import rest_get_dog
 from graphene_django.views import GraphQLView
 from django.views.decorators.csrf import csrf_exempt
-from dogapp.schema import schema
+from dogapi.schema import schema
 from django.contrib.auth import views as auth_views
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,

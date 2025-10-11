@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dogapp',
+    'dogapi',
     'rest_framework',
     'rest_framework_simplejwt',
     'graphene_django',
