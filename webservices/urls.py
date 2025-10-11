@@ -17,8 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from dogapi.views import dog_service
-from dogapi.views import rest_get_dog
+from dogapi.views import rest_get_dog, DogDetail, DogList
 from graphene_django.views import GraphQLView
+from dogapi import views
 from django.views.decorators.csrf import csrf_exempt
 from dogapi.schema import schema
 from django.contrib.auth import views as auth_views
@@ -26,14 +27,19 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('soap/dogservice/', dog_service),
     path('rest/dog/<int:dog_id>/', rest_get_dog, name='rest_get_dog'),
+    path('dogs/', views.DogList.as_view()),
+    path('dogs/<int:pk>/', views.DogDetail.as_view()),
     path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
