@@ -1,15 +1,8 @@
-from spyne import Application, rpc, ServiceBase, Integer, Unicode
-from spyne.protocol.soap import Soap11
-from spyne.server.django import DjangoApplication
-from dogapi.models import Dog, Breed
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework import status, permissions, renderers
+from rest_framework import status 
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes, renderer_classes
 from rest_framework.views import APIView
 from .models import Dog, Breed
 from .serializers import DogSerializer, BreedSerializer
-from django.contrib.auth import authenticate
 from django.http import Http404
 
 class DogList(APIView):

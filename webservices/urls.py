@@ -16,10 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from dogapi.views import DogDetail, DogList
-from graphene_django.views import GraphQLView
 from dogapi import views
-from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import views as auth_views
 from rest_framework.urlpatterns import format_suffix_patterns
 
